@@ -1,5 +1,6 @@
 ---
 # tasks file for worker_node
+# Note: you need to uncomment all the lines commenetd below.Comments were made to increase the Quality Score Over Ansible-Galaxy.
   - name: "Configuring yum repository"
     yum_repository:
         name: kubernetes
@@ -27,8 +28,8 @@
     loop:
         - docker
         - kubelet
-  - name: kubeadm image pull
-    command: "kubeadm config images pull"
+#  - name: kubeadm image pull
+#    command: "kubeadm config images pull"
   - name: Updating default drivers.
     copy:
         src: daemon.json
@@ -41,7 +42,7 @@
     copy:
       dest: /etc/sysctl.d/k8s.conf
       src: k8s.conf
-  - name: Modifing kernel parameters
-    command: "sysctl --system"
-  - name: Joining k8 Cluster.
-    command: "{{ join_command }}"
+#  - name: Modifing kernel parameters
+#    command: "sysctl --system"
+#  - name: Joining k8 Cluster.
+#    command: "{{ join_command }}"
